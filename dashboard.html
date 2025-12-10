@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Buddy – My dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="page-dashboard">
+  <div class="page-shell">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">
+          <span class="brand-dot"></span>
+        </div>
+        <div class="brand-text">
+          <strong>Scholarship Buddy</strong>
+          <span>My dashboard</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Eligibility quiz</a>
+        <a href="scholarships.html" class="nav-link">Scholarships</a>
+        <a href="dashboard.html" class="nav-link nav-link--active">My dashboard</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="auth.html" class="nav-link nav-link--primary">Login</a>
+      </nav>
+    </header>
+
+    <!-- PARENT INFO STRIP -->
+    <div class="parent-info-bar">
+      <strong>Dashboard for families:</strong>
+      This view is meant to be used together – student + parent – so everyone knows which scholarships
+      you’re targeting and what’s pending this week.
+    </div>
+
+    <!-- MAIN -->
+    <main class="section">
+      <header class="section-header">
+        <h2>Your shortlisted scholarships & preparation checklist</h2>
+        <p>
+          Save 3–5 realistic scholarships, then use the checklist below to prepare documents early.
+          The progress bar gives a quick “How ready are we?” snapshot.
+        </p>
+      </header>
+
+      <div class="section-grid">
+        <!-- LEFT: SAVED LIST + CHECKLIST -->
+        <section class="card">
+          <h3>Saved scholarships</h3>
+          <p class="card-subtitle">
+            These are scholarships you’ve marked as important from the main list. Focus on these first.
+          </p>
+
+          <div id="savedList" class="scholarship-list">
+            <!-- JS will inject saved scholarship cards here -->
+          </div>
+
+          <div class="dashboard-checklist">
+            <div class="card-title-small">Your generic application checklist</div>
+            <p class="card-subtitle">
+              Many scholarships ask for similar core documents. This generic list keeps everyone aligned.
+              Later, each scholarship will have its own auto-generated checklist.
+            </p>
+
+            <ul class="checklist" id="checklist">
+              <li class="checklist-item">
+                <input type="checkbox">
+                <span>Create account on the relevant government / private portal.</span>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox">
+                <span>Upload 10th &amp; 12th marksheets or latest semester marks.</span>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox">
+                <span>Upload income certificate (latest financial year).</span>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox">
+                <span>Get college bonafide certificate stamped & signed.</span>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox">
+                <span>Check bank details for Direct Benefit Transfer (DBT).</span>
+              </li>
+            </ul>
+
+            <div class="progress-row">
+              <div class="progress-bar">
+                <div class="progress-fill" id="checklistProgressFill"></div>
+              </div>
+              <span class="progress-label" id="checklistProgressLabel">0% ready</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT: DEADLINES + STORY -->
+        <section class="card">
+          <div class="dashboard-checklist">
+                <div class="card-title-small">Your application checklist</div>
+                <p class="card-subtitle">
+                    When you save scholarships, we automatically build a combined document checklist
+                    from their requirements. If you haven’t saved anything yet, we show a generic list.
+                </p>
+
+                <ul class="checklist" id="checklist"></ul>
+                <p class="muted-text" id="checklistHint"></p>
+
+                <div class="progress-row">
+                    <div class="progress-bar">
+                    <div class="progress-fill" id="checklistProgressFill"></div>
+                    </div>
+                    <span class="progress-label" id="checklistProgressLabel">0% ready</span>
+                </div>
+                </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Shared modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="modalTitle">Scholarship details</h2>
+          <div class="card-subtitle" id="modalSubtitle"></div>
+        </div>
+        <button class="btn btn-secondary btn-xs" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="badge" id="modalFitTag"></div>
+      <div class="modal-section" id="modalEligibility"></div>
+      <div class="modal-section" id="modalDocs"></div>
+      <div class="modal-section" id="modalRedFlags"></div>
+      <div class="modal-section" id="modalTrust"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

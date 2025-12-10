@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Buddy – Login / Sign up (demo)</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="page-auth">
+  <div class="page-shell">
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="logo-pill">SB</div>
+        <div class="brand-text">
+          <strong>Scholarship Buddy</strong>
+          <span>Demo login & sign up</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Eligibility quiz</a>
+        <a href="scholarships.html" class="nav-link">Scholarships</a>
+        <a href="dashboard.html" class="nav-link">My dashboard</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="auth.html" class="nav-link active">Login / Sign up</a>
+      </nav>
+      <div class="nav-right">
+        <label class="pill">
+          <input type="checkbox" id="parentModeToggle">
+          👨‍👩‍👧 Parent mode
+        </label>
+        <button class="btn-pill" id="langToggleBtn">🌐 EN</button>
+        <button class="btn-pill" id="themeToggleBtn">🌙 Dark mode</button>
+      </div>
+    </header>
+
+    <div class="parent-info-bar">
+      <strong>Note:</strong>
+      This is a demo-only screen to show how login / signup might look. It doesn’t create real accounts.
+    </div>
+
+    <main class="form-grid">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Login (demo)</div>
+            <div class="card-subtitle">
+              In a real app, this would check your email and password and load your saved scholarships.
+            </div>
+          </div>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-field">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" name="email" type="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-field">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" required placeholder="********">
+          </div>
+          <button class="btn btn-primary" type="submit">Login (demo)</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Sign up (demo)</div>
+            <div class="card-subtitle">
+              Imagine: we create a profile, store your quiz answers, and sync saved scholarships across devices.
+            </div>
+          </div>
+        </div>
+
+        <form id="signupForm">
+          <div class="form-field">
+            <label for="signupName">Full name</label>
+            <input id="signupName" name="name" type="text" required placeholder="Riya Sharma">
+          </div>
+          <div class="form-field">
+            <label for="signupEmail">Email</label>
+            <input id="signupEmail" name="email" type="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-field">
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" name="password" type="password" required placeholder="Create a password">
+          </div>
+          <button class="btn btn-outline" type="submit">Create account (demo)</button>
+        </form>
+
+        <p class="text-muted mt-8">
+          In your presentation, you can say: “Next version will plug this into Firebase Auth or our college SSO.”
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Shared modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="modalTitle">Scholarship details</h2>
+          <div class="card-subtitle" id="modalSubtitle"></div>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="badge" id="modalFitTag"></div>
+      <div class="modal-section" id="modalEligibility"></div>
+      <div class="modal-section" id="modalDocs"></div>
+      <div class="modal-section" id="modalRedFlags"></div>
+      <div class="modal-section" id="modalTrust"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

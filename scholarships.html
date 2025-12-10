@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Buddy – Scholarships</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="page-scholarships">
+  <div class="page-shell">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">
+          <span class="brand-dot"></span>
+        </div>
+        <div class="brand-text">
+          <strong>Scholarship Buddy</strong>
+          <span>Scholarship results</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Eligibility quiz</a>
+        <a href="scholarships.html" class="nav-link nav-link--active">Scholarships</a>
+        <a href="dashboard.html" class="nav-link">My dashboard</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="auth.html" class="nav-link nav-link--primary">Login</a>
+      </nav>
+    </header>
+
+    <!-- PARENT INFO STRIP -->
+    <div class="parent-info-bar">
+      <strong>For parents:</strong>
+      Use the filters below to see <em>government vs private</em> options and check which
+      scholarships are <strong>Verified</strong> by the admin team.
+    </div>
+
+    <!-- MAIN -->
+    <main class="section">
+      <header class="section-header">
+        <h2>Scholarships that match your profile</h2>
+        <p>
+          Based on your quiz answers (or default filters), we group scholarships into
+          <strong>need-based</strong>, <strong>merit-based</strong>, <strong>mixed</strong>,
+          and by <strong>provider</strong> (government, private, global).
+        </p>
+      </header>
+
+      <div class="section-grid">
+        <!-- LEFT: LIST + FILTERS -->
+        <section class="card">
+          <h3>High-fit scholarships</h3>
+          <p class="card-subtitle">
+            Adjust filters to focus on government vs private, merit vs need-based, and verified schemes.
+          </p>
+
+          <p id="noQuizMsg" class="muted-text" style="display:none;">
+            Tip: Take the eligibility quiz first for sharper recommendations (filters still work without it).
+          </p>
+
+          <!-- FILTER BAR -->
+          <div class="filter-bar">
+            <select id="filterLevel">
+              <option value="any">Any level</option>
+              <option value="School">Class 11–12</option>
+              <option value="UG">UG</option>
+              <option value="PG">PG</option>
+            </select>
+            <select id="filterLocation">
+              <option value="any">Any location</option>
+              <option value="India">India</option>
+              <option value="Abroad">Abroad / Global</option>
+            </select>
+            <select id="filterDifficulty">
+              <option value="any">Any difficulty</option>
+              <option value="moderate">Moderate</option>
+              <option value="competitive">Competitive</option>
+            </select>
+            <select id="filterType">
+              <option value="any">Need + merit</option>
+              <option value="need">Need-based only</option>
+              <option value="merit">Merit-based only</option>
+              <option value="mixed">Mixed</option>
+            </select>
+            <select id="filterProvider">
+              <option value="any">Any provider</option>
+              <option value="government">Government</option>
+              <option value="private">Private / NGO</option>
+              <option value="global">Global</option>
+            </select>
+            <select id="filterVerified">
+              <option value="any">Verified + not verified</option>
+              <option value="verified">Verified only</option>
+              <option value="unverified">Not verified only</option>
+            </select>
+            <input type="search" id="filterSearch" placeholder="Search by name / year…">
+          </div>
+
+          <!-- LIST (JS POPULATES ITEMS HERE) -->
+          <div id="scholarshipList" class="scholarship-list">
+            <!-- Each card will be inserted by JS using your existing logic -->
+          </div>
+
+          <!-- COMPARE DRAWER -->
+          <div class="compare-drawer" id="compareDrawer" style="display:none;">
+            <div class="compare-header">
+              <span><strong>Compare scholarships</strong> – side-by-side</span>
+              <button class="btn btn-secondary btn-xs" id="clearCompareBtn">Clear</button>
+            </div>
+            <p class="muted-text">
+              Helpful for choices like “government need-based vs private merit scholarship – which one fits us better?”.
+            </p>
+            <table class="compare-table" id="compareTable"></table>
+          </div>
+        </section>
+
+        <!-- RIGHT: DEADLINES / STORIES -->
+        <section class="card">
+          <h3>This month’s deadlines</h3>
+          <p class="card-subtitle">
+            Use this as a calendar view for saved scholarships. In the future, this connects to email or WhatsApp reminders.
+          </p>
+
+          <div class="deadline-list" id="deadlineList">
+            <!-- JS will populate from the same scholarship data -->
+          </div>
+
+          <div class="story-card">
+            <div class="story-title">“Common mistakes students made last year”</div>
+            <ul class="story-list">
+              <li>Started applications in the last 3 days and ran out of time for documents.</li>
+              <li>Didn’t get income certificates or bonafide letters in advance.</li>
+              <li>Missed portal verification by college / institute after submitting.</li>
+            </ul>
+            <div class="story-meta">
+              Design thinking angle: this section mixes <strong>information</strong> with
+              <strong>motivation</strong> so students don’t give up before even trying.
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Shared modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="modalTitle">Scholarship details</h2>
+          <div class="card-subtitle" id="modalSubtitle"></div>
+        </div>
+        <button class="btn btn-secondary btn-xs" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="badge" id="modalFitTag"></div>
+      <div class="modal-section" id="modalEligibility"></div>
+      <div class="modal-section" id="modalDocs"></div>
+      <div class="modal-section" id="modalRedFlags"></div>
+      <div class="modal-section" id="modalTrust"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
