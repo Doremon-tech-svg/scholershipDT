@@ -1,5 +1,4 @@
-// ============ DATA & STORAGE KEYS ============
-
+//reduce the size is the task
 const SB_STORAGE_KEYS = {
   quiz: "sb_quiz_answers",
   saved: "sb_saved_scholarships",
